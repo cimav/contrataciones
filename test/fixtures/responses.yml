@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidate: one
+  user_references: MyString
+  level: one
+  comments: MyString
+
+two:
+  candidate: two
+  user_references: MyString
+  level: two
+  comments: MyString

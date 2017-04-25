@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  department: one
+  status: 1
+  level: one
+  email: MyString
+  function: MyString
+  degree: MyString
+
+two:
+  name: MyString
+  department: two
+  status: 1
+  level: two
+  email: MyString
+  function: MyString
+  degree: MyString
