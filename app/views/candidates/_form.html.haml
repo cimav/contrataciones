@@ -1,0 +1,23 @@
+=form_for @candidate do |f|
+  .row.form-group
+    =f.label :name, 'Nombre completo', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_field :name, class:'form-control'
+  .row.form-group
+    =f.label :email, 'Email', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_field :email, type:'email', class:'form-control'
+  .row.form-group
+    =f.label :degree, 'Título Académico', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_field :degree, class:'form-control'
+  .row.form-group
+    =f.label :department_id, 'Departamento', class:'control-label col-md-2'
+    .col-md-10
+      =f.collection_select(:department_id, Department.all, :id, :name, class:'form-control')
+  .row.form-group
+    =f.label :function, 'Actividades que realizará', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_area :function, class:'form-control'
+  .row
+    =f.submit 'Guardar',class:'btn center-block'
