@@ -1,0 +1,19 @@
+=form_for @user do |f|
+  .row.form-group
+    =f.label :name, 'Nombre completo', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_field :name, class:'form-control'
+  .row.form-group
+    =f.label :email, 'Email', class:'control-label col-md-2'
+    .col-md-10
+      =f.text_field :email, type:'email', class:'form-control'
+  .row.form-group
+    =f.label :department_id, 'Departamento', class:'control-label col-md-2'
+    .col-md-10
+      =f.collection_select(:department_id, Department.all, :id, :name, class:'form-control')
+  .row.form-group
+    =f.label :user_type, 'Tipo de usuario', class:'control-label col-md-2'
+    .col-md-10
+      =f.select :user_type, [['Administrador', User::ADMIN],['Miembro del comité', User::COMMITTEE]],class:'form-control'
+  .row
+    =f.submit 'Guardar',class:'btn center-block'

@@ -1,0 +1,9 @@
+%h1
+  Elegir nivel
+
+=form_for @response, :url => "#{@candidate.id}/send_response"do |f|
+  .row.form-group
+    =f.label :level_id, 'Nivel', class:'control-label col-md-2'
+    .col-md-10
+      =f.collection_select(:level_id, Level.all, :id, :full_name, class:'form-control')
+      =f.submit 'Enviar'
