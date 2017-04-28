@@ -6,3 +6,34 @@
   =@candidate.department.name
 %h2
   =@candidate.level.full_name
+
+
+%h1
+  Selección de nivel
+%table.table
+  %thead
+    %th
+      Miembro
+    %th
+      Nivel elegido
+    %th
+      Comentarios
+  %tbody
+    -@committee_members.each do |member|
+      %tr
+        %td
+          =member.name
+        %td
+          -response = Response.where(:user_id => member.id).where(:candidate_id => @candidate.id)
+          -if response.size > 0
+            =response[0].level.full_name
+          -else
+            = "---"
+        %td
+          -if response.size >0
+            =response[0].comments
+          -else
+            = "---"
+
+.row
+  =render partial:'response'

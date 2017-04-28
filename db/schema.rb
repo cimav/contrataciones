@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425230942) do
+ActiveRecord::Schema.define(version: 20170428232710) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -44,11 +44,10 @@ ActiveRecord::Schema.define(version: 20170425230942) do
   create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.integer  "candidate_id"
-    t.string   "user_references"
     t.integer  "level_id"
     t.string   "comments"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["candidate_id"], name: "index_responses_on_candidate_id", using: :btree
     t.index ["level_id"], name: "index_responses_on_level_id", using: :btree
     t.index ["user_id"], name: "index_responses_on_user_id", using: :btree

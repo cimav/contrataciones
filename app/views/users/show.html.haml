@@ -1,0 +1,13 @@
+=image_tag "http://cimav.edu.mx/foto/#{@user.email[/[^@]+/]}/200", class:'img-circle'
+%p
+  =@user.name
+%p
+=@user.email
+%p
+=@user.department.name
+%p
+=@user.get_type
+
+
+%a.btn.btn-default{href:" #{@user.id}/edit"}
+  %span.glyphicon.glyphicon-pencil{"aria-hidden"=>"true"}
