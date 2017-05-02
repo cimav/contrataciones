@@ -1,9 +1,18 @@
-%h1
-  Elegir nivel
+.panel.panel-default
+  %h3.panel-heading
+    Elegir nivel
+  .panel-body
+    %ul.list-group
+      %li.list-group-item
 
-=form_for @response, :url => "#{@candidate.id}/send_response"do |f|
-  .row.form-group
-    =f.label :level_id, 'Nivel', class:'control-label col-md-2'
-    .col-md-10
-      =f.collection_select(:level_id, Level.all, :id, :full_name, class:'form-control')
-      =f.submit 'Enviar'
+        =form_for @response, :url => "#{@candidate.id}/send_response"do |f|
+          .row.form-group
+
+            .col-md-3{style:'vertical-align: middle'}
+              =f.label :level_id, 'Nivel', class:'control-label',  style:'vertical-align: middle'
+              =f.collection_select(:level_id, Level.all, :id, :full_name, class:'form-control',  style:'vertical-align: middle')
+            .col-md-7{style:'vertical-align: middle'}
+              =f.label :comments, 'comentarios', class:'control-label', style:'vertical-align: middle'
+              =f.text_area :comments, class:'form-control', rows:'1',  style:'vertical-align: middle'
+            .col-md-2{style:'vertical-align: middle'}
+              =f.submit 'Enviar',  style:'vertical-align: middle', class:'info'

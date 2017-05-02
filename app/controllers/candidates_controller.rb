@@ -21,6 +21,15 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def update
+    @candidate = Candidate.find(params[:id])
+    if @candidate.update(candidate_params)
+      redirect_to @candidate
+    else
+      render :edit
+    end
+  end
+
   def show
     @candidate = Candidate.find(params[:id])
     @response = Response.new
@@ -28,6 +37,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
+    @candidate = Candidate.find(params[:id])
   end
 
   def send_response
@@ -37,7 +47,7 @@ class CandidatesController < ApplicationController
       @response.candidate_id = @candidate.id
       @response.level_id = params[:response][:level_id]
       @response.user_id = current_user.id
-      @response.comments = 'adfv,snfdvksdjn'
+      @response.comments = params[:response][:comments]
       if @response.save
         redirect_to @candidate
       else
@@ -46,6 +56,14 @@ class CandidatesController < ApplicationController
     else
       render plain: 'Solo los mienbros del comité pueden elegir el nivel'
     end
+  end
+
+  def candidates_waiting
+    @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
+  end
+
+  def candidates_finalized
+    @candidates_finalized = Candidate.where(:status => Candidate::FINALIZED)
   end
 
   private

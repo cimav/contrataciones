@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       session[:user_auth]
     end
   end
+
   helper_method :authenticated?
 
   def auth_required
@@ -24,6 +25,11 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
   helper_method :current_user
 
+  def get_candidates_waiting
+    @candidates_waiting_number = Candidate.where(:status => Candidate::WAITING).size
+  end
+  helper_method :get_candidates_waiting
 end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root 'candidates#index'
+  get 'home/index'
+
+  root 'home#index'
   post 'candidates/:id/send_response' => 'candidates#send_response'
+  get 'pendientes' => 'candidates#candidates_waiting'
+  get 'finalizados' => 'candidates#candidates_finalized'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'sessions#failure'
   get 'logout' => 'sessions#destroy'

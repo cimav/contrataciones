@@ -1,39 +1,69 @@
-%h1
-  =@candidate.name
-%h2
-  =@candidate.email
-%h2
-  =@candidate.department.name
-%h2
-  =@candidate.level.full_name
-
-
-%h1
-  Selección de nivel
-%table.table
-  %thead
-    %th
-      Miembro
-    %th
-      Nivel elegido
-    %th
-      Comentarios
-  %tbody
-    -@committee_members.each do |member|
-      %tr
-        %td
-          =member.name
-        %td
-          -response = Response.where(:user_id => member.id).where(:candidate_id => @candidate.id)
-          -if response.size > 0
-            =response[0].level.full_name
-          -else
-            = "---"
-        %td
-          -if response.size >0
-            =response[0].comments
-          -else
-            = "---"
-
-.row
-  =render partial:'response'
+.container
+  .panel.panel-default
+    %h3.panel-heading
+      Datos del candidato
+    .panel-body
+      %ul.list-group
+        %li.list-group-item
+          %b
+            Nombre:
+          =@candidate.name
+        %li.list-group-item
+          %b
+            Grado académico:
+          =@candidate.degree
+        %li.list-group-item
+          %b
+            Email:
+          =@candidate.email
+        %li.list-group-item
+          %b
+            Departamento:
+          =@candidate.department.name
+        %li.list-group-item
+          %b
+            Nivel:
+          =@candidate.level.full_name
+        %li.list-group-item
+          %b
+            Actividades a realizar:
+          =@candidate.function
+.container
+  .panel.panel-default
+    %h3.panel-heading
+      Selección de nivel
+    .panel-body
+      %ul.list-group
+        %li.list-group-item
+          %table.table.table-striped
+            %thead
+              %th
+                %span.glyphicon.glyphicon-user
+              %th
+                Miembro del comité
+              %th
+                Nivel elegido
+              %th
+                Comentarios
+            %tbody
+              -@committee_members.each do |member|
+                %tr
+                  %td
+                    =image_tag "http://cimav.edu.mx/foto/#{member.email[/[^@]+/]}/50", class:'img-circle', alt:'*'
+                  %td
+                    =member.name
+                  %td
+                    -response = Response.where(:user_id => member.id).where(:candidate_id => @candidate.id)
+                    -if response.size > 0
+                      =response.first.level.full_name
+                    -else
+                      = "---"
+                  %td
+                    -if response.size >0
+                      =response.first.comments
+                    -else
+                      = "---"
+.container
+  -if current_user.user_type == User::COMMITTEE
+    -if Response.where(:user_id => current_user.id).where(:candidate_id => @candidate.id).size == 0
+      =render partial:'response'
