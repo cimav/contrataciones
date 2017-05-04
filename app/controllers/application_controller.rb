@@ -26,7 +26,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def is_admin
+    current_user.user_type == User::ADMIN
+  end
+
   helper_method :current_user
+  helper_method :is_admin
 
   def get_candidates_waiting
     @candidates_waiting_number = Candidate.where(:status => Candidate::WAITING).size

@@ -6,13 +6,22 @@
       %li.list-group-item
 
         =form_for @response, :url => "#{@candidate.id}/send_response"do |f|
-          .row.form-group
+          .form-group
+            .row
 
-            .col-md-3{style:'vertical-align: middle'}
-              =f.label :level_id, 'Nivel', class:'control-label',  style:'vertical-align: middle'
-              =f.collection_select(:level_id, Level.all, :id, :full_name, class:'form-control',  style:'vertical-align: middle')
-            .col-md-7{style:'vertical-align: middle'}
-              =f.label :comments, 'comentarios', class:'control-label', style:'vertical-align: middle'
-              =f.text_area :comments, class:'form-control', rows:'1',  style:'vertical-align: middle'
-            .col-md-2{style:'vertical-align: middle'}
-              =f.submit 'Enviar',  style:'vertical-align: middle', class:'info'
+              .col-md-3{style:'vertical-align: middle'}
+                =f.label :level_id, 'Nivel:', class:'control-label',  style:'vertical-align: middle'
+                =f.collection_select :level_id, Level.all, :id, :full_name, class:'form-control',  style:'vertical-align: middle'
+              .col-md-7{style:'vertical-align: middle'}
+                =f.label :comments, 'comentarios:', class:'control-label', style:'vertical-align: middle'
+                =f.text_area :comments, class:'form-control', rows:'1',  style:'vertical-align: middle'
+            .row
+              =label_tag 'Requerimientos:'
+              %p#level-requirements
+
+            .row
+              .col-md-12{style:'vertical-align: middle'}
+                =f.submit 'Enviar',  style:'vertical-align: middle', class:'btn btn-success'
+
+
+

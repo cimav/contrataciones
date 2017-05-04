@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if authenticated?
       redirect_to '/'
     else
-      render :text => '401 Unauthorized', :status => 401
+      render :plain => 'No estás autorizado chiquitín ;)', :status => 401
     end
   end
 
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    render :text => '403 Auth method has failed', :status => 403
+    render :plain => '403 Auth method has failed', :status => 403
   end
 
   protected

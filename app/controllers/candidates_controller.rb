@@ -41,7 +41,6 @@ class CandidatesController < ApplicationController
   end
 
   def send_response
-    if current_user.user_type ==User::COMMITTEE
       @candidate = Candidate.find(params[:id])
       @response = Response.new
       @response.candidate_id = @candidate.id
@@ -50,12 +49,8 @@ class CandidatesController < ApplicationController
       @response.comments = params[:response][:comments]
       if @response.save
         redirect_to @candidate
-      else
-        render plain: 'no se armó'
       end
-    else
-      render plain: 'Solo los mienbros del comité pueden elegir el nivel'
-    end
+
   end
 
   def candidates_waiting
@@ -65,6 +60,12 @@ class CandidatesController < ApplicationController
   def candidates_finalized
     @candidates_finalized = Candidate.where(:status => Candidate::FINALIZED)
   end
+
+  def levels
+    level = Level.find(params[:id])
+    render plain: level.requirements
+  end
+  
 
   private
 

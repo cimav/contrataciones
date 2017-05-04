@@ -2,6 +2,10 @@
   .panel.panel-default
     %h3.panel-heading
       Datos del candidato
+      -if is_admin
+        %a.btn.btn-primary.pull-right{href:"/candidates/#{@candidate.id}/edit"}
+          %span.glyphicon.glyphicon-pencil{"aria-hidden"=>"true"}
+          Editar
     .panel-body
       %ul.list-group
         %li.list-group-item

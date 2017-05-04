@@ -1,15 +1,18 @@
 .container
   %h1
     Candidatos Finalizados
-
-  .list-group
-    -@candidates_finalized.each do |candidate_finalized|
-      %a.list-group-item{:href => "candidates/#{candidate_finalized.id}"}
-        .row
-          .col-md-8
-            =candidate_finalized.name
-          .col-md-2
-            =candidate_finalized.department.name
-          .col-md-2
-            =candidate_finalized.level.short_name
-
+  -if @candidates_finalized.size>0
+    .list-group
+      -@candidates_finalized.each do |candidate_finalized|
+        %a.list-group-item{:href => "candidates/#{candidate_finalized.id}"}
+          .row
+            .col-md-8
+              =candidate_finalized.name
+            .col-md-2
+              =candidate_finalized.department.name
+            .col-md-2
+              =candidate_finalized.level.short_name
+  -else
+  %br
+    %h4
+      Aun no hay candidatos finalizados

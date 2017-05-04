@@ -1,2 +1,34 @@
--@users.each do |user|
-  =user.name
+.container
+  %h1
+    Administradores
+
+  .list-group
+    -@admin_users.each do |user|
+      %a.list-group-item{:href => "users/#{user.id}/edit"}
+        .row
+          .col-md-7
+            =user.name
+          .col-md-2
+            =user.department.name
+          .col-md-3
+            =user.email
+
+  %h1
+    Miembros del comité
+
+  .list-group
+    -@committee_users.each do |user|
+      %a.list-group-item{:href => "users/#{user.id}/edit"}
+        .row
+          .col-md-7
+            =user.name
+          .col-md-2
+            =user.department.name
+          .col-md-3
+            =user.email
+
+
+  %a{href:'users/new', class:'btn btn-danger pull-right', style:'margin-top:20px;'}
+    %span.glyphicon.glyphicon-plus{"aria-hidden"=>"true"}
+    Nuevo usuario
+

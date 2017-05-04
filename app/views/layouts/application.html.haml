@@ -33,7 +33,7 @@
                       =get_candidates_waiting
                 %li
                   =link_to 'Candidatos finalizados', '/finalizados'
-                -if current_user.user_type == User::ADMIN
+                -if is_admin
                   %li
                     =link_to 'Nuevo candidato', new_candidate_path
                   %li

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :auth_required
   def index
-    @users = User.all
+    @admin_users = User.where(user_type:User::ADMIN)
+    @committee_users = User.where(user_type:User::COMMITTEE)
   end
 
   def show

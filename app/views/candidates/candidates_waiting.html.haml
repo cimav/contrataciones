@@ -1,15 +1,18 @@
 .container
   %h1
     Candidatos Pendientes
-
-  .list-group
-    -@candidates_waiting.each do |candidate_waiting|
-      %a.list-group-item{:href => "candidates/#{candidate_waiting.id}"}
-        .row
-          .col-md-8
-            =candidate_waiting.name
-          .col-md-2
-            =candidate_waiting.department.name
-          .col-md-2
-            =candidate_waiting.level.short_name
-
+  -if @candidates_waiting.size>0
+    .list-group
+      -@candidates_waiting.each do |candidate_waiting|
+        %a.list-group-item{:href => "candidates/#{candidate_waiting.id}"}
+          .row
+            .col-md-8
+              =candidate_waiting.name
+            .col-md-2
+              =candidate_waiting.department.name
+            .col-md-2
+              =candidate_waiting.level.short_name
+  -else
+    %br
+      %h4
+        No hay candidatos pendientes
