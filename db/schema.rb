@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428232710) do
+ActiveRecord::Schema.define(version: 20170506013520) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170428232710) do
     t.string   "degree"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "curriculum"
     t.index ["department_id"], name: "index_candidates_on_department_id", using: :btree
     t.index ["level_id"], name: "index_candidates_on_level_id", using: :btree
   end

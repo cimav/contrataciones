@@ -6,32 +6,44 @@
         %a.btn.btn-primary.pull-right{href:"/candidates/#{@candidate.id}/edit"}
           %span.glyphicon.glyphicon-pencil{"aria-hidden"=>"true"}
           Editar
-    .panel-body
-      %ul.list-group
-        %li.list-group-item
-          %b
-            Nombre:
-          =@candidate.name
-        %li.list-group-item
-          %b
-            Grado académico:
-          =@candidate.degree
-        %li.list-group-item
-          %b
-            Email:
-          =@candidate.email
-        %li.list-group-item
-          %b
-            Departamento:
-          =@candidate.department.name
-        %li.list-group-item
-          %b
-            Nivel:
-          =@candidate.level.full_name
-        %li.list-group-item
-          %b
-            Actividades a realizar:
-          =@candidate.function
+    .row
+      .col-md-8
+        .panel-body
+          %ul.list-group
+            %li.list-group-item
+              %b
+                Nombre:
+              =@candidate.name
+            %li.list-group-item
+              %b
+                Grado académico:
+              =@candidate.degree
+            %li.list-group-item
+              %b
+                Email:
+              =@candidate.email
+            %li.list-group-item
+              %b
+                Departamento:
+              =@candidate.department.name
+            %li.list-group-item
+              %b
+                Nivel:
+              =@candidate.level.full_name
+            %li.list-group-item
+              %b
+                Actividades a realizar:
+              =@candidate.function
+
+      .col-md-4.text-center{style:'height: 100%; color: #E3E3E3;'}
+        .thumbnail{style:'height: 100%'}
+
+
+          %a.btn{href:"#{@candidate.curriculum_url}"}
+            %span.glyphicon.glyphicon-briefcase{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+            %br
+            Curriculum
+
 .container
   .panel.panel-default
     %h3.panel-heading

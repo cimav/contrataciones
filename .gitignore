@@ -14,5 +14,6 @@
 !/tmp/.keep
 .idea
 Gemfile.lock
+public/uploads
 # Ignore Byebug command history file.
 .byebug_history
