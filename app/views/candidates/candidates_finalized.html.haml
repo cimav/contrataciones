@@ -1,18 +1,26 @@
+
 .container
   %h1
     Candidatos Finalizados
-  -if @candidates_finalized.size>0
+  %br
+  -if @candidates_voted.size>0
     .list-group
-      -@candidates_finalized.each do |candidate_finalized|
-        %a.list-group-item{:href => "candidates/#{candidate_finalized.id}"}
+      -@candidates_voted.each do |candidate|
+        -estatus = 'list-group-item-success'
+        -if candidate.status == Candidate::DISAGREE
+          -estatus = 'list-group-item-danger'
+        %a.list-group-item{:href => "candidates/#{candidate.id}", class:"#{estatus}"}
           .row
             .col-md-8
-              =candidate_finalized.name
+              =candidate.name
             .col-md-2
-              =candidate_finalized.department.name
+              =candidate.get_decision_type
             .col-md-2
-              =candidate_finalized.level.short_name
+              -if candidate.status == Candidate::DISAGREE
+                En desacuerdo
+              -else
+                =candidate.level.short_name
+
   -else
-  %br
     %h4
       Aun no hay candidatos finalizados

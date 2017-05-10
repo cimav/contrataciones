@@ -4,13 +4,13 @@
     .col-md-10
       =f.text_field :name, class:'form-control'
   .row.form-group
-    =f.label :email, 'Email:', class:'control-label col-md-2'
-    .col-md-10
-      =f.text_field :email, type:'email', class:'form-control'
-  .row.form-group
     =f.label :degree, 'Título Académico:', class:'control-label col-md-2'
     .col-md-10
       =f.text_field :degree, class:'form-control'
+  .row.form-group
+    =f.label :sni, 'SNI:', class:'control-label col-md-2'
+    .col-md-10
+      =f.select :sni, [['Ninguno'],['I'],['II'],['III']] , class:'form-control'
   .row.form-group
     =f.label :department_id, 'Departamento:', class:'control-label col-md-2'
     .col-md-10
@@ -24,4 +24,4 @@
     .col-md-10
       =f.file_field  :curriculum, class:'btn btn-default'
   .row
-    =f.submit 'Guardar',class:'btn center-block'
+    =f.submit 'Guardar',class:'btn btn-success center-block'

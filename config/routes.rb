@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   post 'candidates/:id/send_response' => 'candidates#send_response'
+  patch 'candidates/:id/desagree' => 'candidates#desagree'
   get 'pendientes' => 'candidates#candidates_waiting'
   get 'finalizados' => 'candidates#candidates_finalized'
   get '/auth/:provider/callback' => 'sessions#create'

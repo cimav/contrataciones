@@ -20,8 +20,8 @@
               =@candidate.degree
             %li.list-group-item
               %b
-                Email:
-              =@candidate.email
+                SNI:
+              =@candidate.sni
             %li.list-group-item
               %b
                 Departamento:
@@ -83,3 +83,5 @@
   -if current_user.user_type == User::COMMITTEE
     -if Response.where(:user_id => current_user.id).where(:candidate_id => @candidate.id).size == 0
       =render partial:'response'
+  -if @candidate.status == Candidate::DISAGREE
+    =render partial:'desagree'

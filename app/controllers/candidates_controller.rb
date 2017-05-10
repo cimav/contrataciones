@@ -1,8 +1,9 @@
 class CandidatesController < ApplicationController
   before_action :auth_required
+  skip_before_filter :verify_authenticity_token
   def index
     @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
-    @candidates_finalized = Candidate.where(:status => Candidate::FINALIZED)
+    @candidates_voted = Candidate.where(:status => Candidate::FINALIZED)
   end
 
   def new
@@ -50,7 +51,22 @@ class CandidatesController < ApplicationController
       if @response.save
         redirect_to @candidate
       end
+  end
 
+  def desagree
+    @candidate = Candidate.find(params[:id])
+    if @candidate.status == Candidate::DISAGREE
+      @candidate.decision_type = Candidate::NOT_COMMITTEE
+      @candidate.level_id = params[:candidate][:level_id]
+      @candidate.comments = params[:candidate][:comments]
+      @candidate.status = Candidate::FINALIZED
+
+      if @candidate.save
+        redirect_to @candidate
+      else
+        render plain:'Error al dar nivel'
+      end
+    end
   end
 
   def candidates_waiting
@@ -58,18 +74,19 @@ class CandidatesController < ApplicationController
   end
 
   def candidates_finalized
-    @candidates_finalized = Candidate.where(:status => Candidate::FINALIZED)
+    @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
   end
 
   def levels
     level = Level.find(params[:id])
     render plain: level.requirements
   end
-  
+
+
 
   private
 
   def candidate_params
-    params.require(:candidate).permit(:name, :department_id, :email, :function, :degree, :curriculum)
+    params.require(:candidate).permit(:name, :department_id, :sni, :function, :degree, :curriculum)
   end
 end

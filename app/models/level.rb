@@ -1,6 +1,6 @@
 class Level < ApplicationRecord
   has_many :candidates
-  has_many :responses
+  has_many :responses, dependent: :destroy
 
   TECHNICAL = 1
   INVESTIGATION = 2

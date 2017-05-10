@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506013520) do
+ActiveRecord::Schema.define(version: 20170510185511) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "department_id"
     t.integer  "status"
     t.integer  "level_id"
-    t.string   "email"
+    t.string   "sni"
     t.string   "function"
     t.string   "degree"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "curriculum"
+    t.integer  "decision_type"
+    t.string   "comments"
     t.index ["department_id"], name: "index_candidates_on_department_id", using: :btree
     t.index ["level_id"], name: "index_candidates_on_level_id", using: :btree
   end

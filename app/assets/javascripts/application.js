@@ -16,4 +16,16 @@
 //= require_tree .
 //= require bootstrap
 
+$(document).on('turbolinks:load', function() {
+    $(function(){ $(document).bootstrap(); });
+});
+
+
+window.onload = function() {
+
+    $(function(){ $(document).bootstrap(); });
+
+};
+
+
 $('.dropdown-toggle').dropdown();

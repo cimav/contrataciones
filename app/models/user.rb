@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   belongs_to :department
-  has_many :responses
+  has_many :responses, dependent: :destroy
 
   ADMIN = 1
   COMMITTEE = 2
