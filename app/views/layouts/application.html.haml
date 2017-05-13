@@ -43,6 +43,10 @@
               %a{:href => "/logout"}
                 %span.glyphicon.glyphicon-log-out
                 salir
+
     .container-fluid
       .row{style:'margin: 40px; margin-top: 80px'}
+        .container
+          -if flash
+            =render partial: 'layouts/flash_message', flash: flash
         = yield

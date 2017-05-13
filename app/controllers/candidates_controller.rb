@@ -16,8 +16,10 @@ class CandidatesController < ApplicationController
     data[:level_id] = Level::WITHOUT_LEVEL
     @candidate = Candidate.new(data)
     if @candidate.save(data)
+      flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
+      flash[:error] = "Error al crear candidato"
       render :new
     end
   end
@@ -25,8 +27,10 @@ class CandidatesController < ApplicationController
   def update
     @candidate = Candidate.find(params[:id])
     if @candidate.update(candidate_params)
+      flash[:success] = "Se actualizó al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
+      flash[:error] = "Error al actualizar candidato"
       render :edit
     end
   end
@@ -49,6 +53,7 @@ class CandidatesController < ApplicationController
       @response.user_id = current_user.id
       @response.comments = params[:response][:comments]
       if @response.save
+        flash[:success] = "Nivel #{@response.level.full_name} enviado exitosamente"
         redirect_to @candidate
       end
   end
@@ -62,6 +67,7 @@ class CandidatesController < ApplicationController
       @candidate.status = Candidate::FINALIZED
 
       if @candidate.save
+        flash[:alert] = "Se seleccionó manualmente el nivel a #{@candidate.name}"
         redirect_to @candidate
       else
         render plain:'Error al dar nivel'
