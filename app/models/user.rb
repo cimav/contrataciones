@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  audited
   belongs_to :department
   has_many :responses, dependent: :destroy
 

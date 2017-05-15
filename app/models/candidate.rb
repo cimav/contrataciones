@@ -1,4 +1,5 @@
 class Candidate < ApplicationRecord
+  audited
   belongs_to :department
   belongs_to :level
   has_many :responses, dependent: :destroy

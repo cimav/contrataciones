@@ -1,4 +1,5 @@
 class Response < ApplicationRecord
+  audited
   belongs_to :candidate
   belongs_to :user
   belongs_to :level
