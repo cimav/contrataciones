@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'levels/:id' =>'candidates#levels'
   get 'home/index'
 
-  root 'home#index'
+  root 'candidates#index'
   post 'candidates/:id/send_response' => 'candidates#send_response'
   patch 'candidates/:id/desagree' => 'candidates#desagree'
   get 'pendientes' => 'candidates#candidates_waiting'

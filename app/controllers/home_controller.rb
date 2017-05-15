@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     if is_admin
       render :template => 'home/admin-index'
     else
-      render :template => 'home/members-index'
+      render :template => 'candidates/index'
     end
   end
 end

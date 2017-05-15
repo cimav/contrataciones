@@ -1,0 +1,44 @@
+
+.container
+
+  %h1
+    Candidatos Pendientes
+  -if @candidates_waiting.size>0
+    .list-group
+      -@candidates_waiting.each do |candidate_waiting|
+        %a.list-group-item.list-group-item-info{:href => "candidates/#{candidate_waiting.id}"}
+          .row
+            .col-md-10
+              =candidate_waiting.name
+            .col-md-2
+              =candidate_waiting.department.name
+  -else
+    %br
+      %h4
+        No hay candidatos pendientes
+
+  %h1
+    Candidatos Finalizados
+  %br
+  -if @candidates_voted.size>0
+    .list-group
+      -@candidates_voted.each do |candidate|
+        -estatus = 'list-group-item-success'
+        -if candidate.status == Candidate::DISAGREE
+          -estatus = 'list-group-item-danger'
+        %a.list-group-item{:href => "candidates/#{candidate.id}", class:"#{estatus}"}
+          .row
+            .col-md-8
+              =candidate.name
+            .col-md-2
+              =candidate.get_decision_type
+            .col-md-2
+              -if candidate.status == Candidate::DISAGREE
+                En desacuerdo
+              -else
+                =candidate.level.short_name
+
+  -else
+    %h4
+      Aun no hay candidatos finalizados
+

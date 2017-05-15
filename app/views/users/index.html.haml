@@ -6,9 +6,9 @@
     -@admin_users.each do |user|
       %a.list-group-item{:href => "users/#{user.id}/edit"}
         .row
-          .col-md-7
+          .col-md-5
             =user.name
-          .col-md-2
+          .col-md-4
             =user.department.name
           .col-md-3
             =user.email
@@ -20,9 +20,9 @@
     -@committee_users.each do |user|
       %a.list-group-item{:href => "users/#{user.id}/edit"}
         .row
-          .col-md-7
+          .col-md-5
             =user.name
-          .col-md-2
+          .col-md-4
             =user.department.name
           .col-md-3
             =user.email

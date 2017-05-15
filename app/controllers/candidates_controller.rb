@@ -4,6 +4,12 @@ class CandidatesController < ApplicationController
   def index
     @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
     @candidates_voted = Candidate.where(:status => Candidate::FINALIZED)
+
+    if is_admin
+      render :template => 'home/admin-index'
+    else
+      render :template => 'candidates/index'
+    end
   end
 
   def new

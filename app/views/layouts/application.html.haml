@@ -18,26 +18,6 @@
           %a.navbar-brand{:href => "/"} Contrataciones CIMAV
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.dropdown
-              %a.dropdown-toogle{:href =>'#',"data-toggle" => "dropdown"}
-                Menú
-                -if get_candidates_waiting >0
-                  %span.badge
-                    =get_candidates_waiting
-                %span.caret
-              %ul.dropdown-menu
-                %li
-                  %a{:href => '/pendientes'}
-                    Candidatos pendientes
-                    %span.badge
-                      =get_candidates_waiting
-                %li
-                  =link_to 'Candidatos finalizados', '/finalizados'
-                -if is_admin
-                  %li
-                    =link_to 'Nuevo candidato', new_candidate_path
-                  %li
-                    =link_to 'Usuarios', users_path
           %ul.nav.navbar-nav.navbar-right
             %li
               %a{:href => "/logout"}
