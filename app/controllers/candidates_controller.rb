@@ -33,7 +33,7 @@ class CandidatesController < ApplicationController
   def update
     @candidate = Candidate.find(params[:id])
     if @candidate.update(candidate_params)
-      flash[:success] = "Se actualizó al candidato: #{@candidate.name}"
+      flash[:notice] = "Se actualizó al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
       flash[:error] = "Error al actualizar candidato"
@@ -88,12 +88,6 @@ class CandidatesController < ApplicationController
   def candidates_finalized
     @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
   end
-
-  def levels
-    level = Level.find(params[:id])
-    render plain: level.requirements
-  end
-
 
 
   private

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'login/index'
-  get 'levels/:id' =>'candidates#levels'
   get 'home/index'
 
   root 'candidates#index'

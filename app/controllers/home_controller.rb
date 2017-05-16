@@ -7,4 +7,13 @@ class HomeController < ApplicationController
       render :template => 'candidates/index'
     end
   end
+
+  def nivel
+
+  end
+  def set_nivel
+    nivel = Level.find(:id)
+    nivel.requirements = params[:requirements]
+    nivel.save
+  end
 end
