@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
   before_action :auth_required
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   def index
     @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
     @candidates_voted = Candidate.where(:status => Candidate::FINALIZED)
@@ -87,6 +87,23 @@ class CandidatesController < ApplicationController
 
   def candidates_finalized
     @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
+  end
+
+  def documento
+
+    if is_admin
+      candidate = Candidate.find(params[:id])
+      pdf = Prawn::Document.new
+      pdf.font 'Helvetica'
+      pdf.text  candidate.name, size:40
+      pdf.font 'Times-Roman'
+      pdf.text  "holi", size:84
+      send_data pdf.render, filename:"contratacion#{candidate.name}.pdf", type:'application/pdf', disposition:'inline'
+    else
+      flash[:error] = "Sólo el administrador puede realizar esta acción"
+      redirect_to root_path
+    end
+
   end
 
 

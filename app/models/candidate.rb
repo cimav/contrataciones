@@ -15,7 +15,7 @@ class Candidate < ApplicationRecord
 
   LEVEL_TYPES = {
       UNANIMITY => "Decisión unánime",
-      NOT_COMMITTEE => "Enviado a comité",
+      NOT_COMMITTEE => "Decisión de calidad",
       REJECTED => "Rechazado"
   }
 

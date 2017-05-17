@@ -7,6 +7,7 @@ class InstallAudited < ActiveRecord::Migration[5.0]
       t.column :associated_type, :string
       t.column :user_id, :integer
       t.column :user_type, :string
+      t.column :username, :string
       t.column :action, :string
       t.column :audited_changes, :text
       t.column :version, :integer, :default => 0

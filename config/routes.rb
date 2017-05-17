@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'login/index'
   get 'home/index'
+  get 'candidates/:id/documento' => 'candidates#documento'
 
   root 'candidates#index'
   post 'candidates/:id/send_response' => 'candidates#send_response'

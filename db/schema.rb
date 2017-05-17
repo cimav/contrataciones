@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515181647) do
+ActiveRecord::Schema.define(version: 20170517184649) do
 
   create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "auditable_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170515181647) do
     t.string   "associated_type"
     t.integer  "user_id"
     t.string   "user_type"
+    t.string   "username"
     t.string   "action"
     t.text     "audited_changes", limit: 65535
     t.integer  "version",                       default: 0
@@ -59,10 +60,9 @@ ActiveRecord::Schema.define(version: 20170515181647) do
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "full_name"
     t.string   "short_name"
-    t.string   "requirements"
     t.integer  "level_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
