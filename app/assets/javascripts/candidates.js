@@ -31,5 +31,16 @@ document.addEventListener("turbolinks:load", function() {
 
     });
 
+    $("#close_votation").click(function(){
+        $.post("close_votation",
+            {
+                name: "Donald Duck",
+                city: "Duckburg"
+            },
+            function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+    });
+
 
 })

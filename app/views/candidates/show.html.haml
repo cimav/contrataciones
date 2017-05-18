@@ -37,15 +37,15 @@
               %b
                 Actividades a realizar:
               =@candidate.function
+      -if !@candidate.curriculum.nil?
+        .col-md-4.text-center{style:'height: 100%; color: #E3E3E3;'}
+          .thumbnail{style:'height: 100%'}
 
-      .col-md-4.text-center{style:'height: 100%; color: #E3E3E3;'}
-        .thumbnail{style:'height: 100%'}
 
-
-          %a.btn{href:"#{@candidate.curriculum_url}"}
-            %span.glyphicon.glyphicon-briefcase{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
-            %br
-            Curriculum
+            %a.btn{href:"#{@candidate.curriculum_url}"}
+              %span.glyphicon.glyphicon-briefcase{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+              %br
+              Curriculum
 
 .container
   .panel.panel-default
@@ -86,8 +86,13 @@
                           = "---"
 .container
   -if current_user.user_type == User::COMMITTEE
-    -if Response.where(:user_id => current_user.id).where(:candidate_id => @candidate.id).size == 0
-      =render partial:'response'
+    -if @candidate.status == Candidate::WAITING
+      -if Response.where(:user_id => current_user.id).where(:candidate_id => @candidate.id).size == 0
+        =render partial:'response'
   -if is_admin
     -if @candidate.status == Candidate::DISAGREE
       =render partial:'desagree'
+    -if @candidate.status == Candidate::WAITING
+      =link_to  "#{@candidate.id.to_s}/close_votation", method:'post', class:'btn btn-warning pull-right' do
+        %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden"=>"true"}
+        Cerrar votación

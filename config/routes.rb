@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get 'login/index'
   get 'home/index'
-  get 'candidates/:id/documento' => 'candidates#documento'
+  get 'candidates/:id/documento' => 'candidates#document'
+
 
   root 'candidates#index'
   post 'candidates/:id/send_response' => 'candidates#send_response'
   patch 'candidates/:id/desagree' => 'candidates#desagree'
+  post 'candidates/:id/close_votation' => 'candidates#close_votation'
   get 'pendientes' => 'candidates#candidates_waiting'
   get 'finalizados' => 'candidates#candidates_finalized'
   get '/auth/:provider/callback' => 'sessions#create'
