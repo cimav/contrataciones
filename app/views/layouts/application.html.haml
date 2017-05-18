@@ -7,7 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-default.navbar-fixed-top
+    %nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
           %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
@@ -16,11 +16,12 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{:href => "/"} Contrataciones CIMAV
+          %img.img-resposive{}
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => "/logout"}
+              %a.btn.bn-default{:href => "/logout"}
                 %span.glyphicon.glyphicon-log-out
                 salir
 

@@ -37,7 +37,7 @@
               %b
                 Actividades a realizar:
               =@candidate.function
-      -if !@candidate.curriculum.nil?
+      -if ! @candidate.curriculum.blank?
         .col-md-4.text-center{style:'height: 100%; color: #E3E3E3;'}
           .thumbnail{style:'height: 100%'}
 
@@ -46,6 +46,9 @@
               %span.glyphicon.glyphicon-briefcase{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
               %br
               Curriculum
+      -else
+        .col-md-4.text-center{style:'height: 100%; color: #E3E3E3;'}
+          %h1 'Sin currículum'
 
 .container
   .panel.panel-default
