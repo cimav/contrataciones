@@ -23,6 +23,7 @@ class CandidatesController < ApplicationController
     data[:level_id] = Level::WITHOUT_LEVEL
     @candidate = Candidate.new(data)
     if @candidate.save(data)
+      ContratacionesMailer.new_candidate(@candidate).deliver_now
       flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
