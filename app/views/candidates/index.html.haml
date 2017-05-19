@@ -8,9 +8,9 @@
       -@candidates_waiting.each do |candidate_waiting|
         %a.list-group-item.list-group-item-info{:href => "candidates/#{candidate_waiting.id}"}
           .row
-            .col-md-10
+            .col-md-8
               =candidate_waiting.name
-            .col-md-2
+            .col-md-4
               =candidate_waiting.department.name
   -else
     %br

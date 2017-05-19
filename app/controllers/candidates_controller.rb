@@ -2,6 +2,7 @@ class CandidatesController < ApplicationController
   before_action :auth_required
   skip_before_action :verify_authenticity_token
 
+
   def index
     @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
     @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
@@ -23,7 +24,7 @@ class CandidatesController < ApplicationController
     data[:level_id] = Level::WITHOUT_LEVEL
     @candidate = Candidate.new(data)
     if @candidate.save(data)
-      #ContratacionesMailer.new_candidate(@candidate).deliver_now
+      ContratacionesMailer.new_candidate(@candidate).deliver_now
       flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
@@ -104,11 +105,29 @@ class CandidatesController < ApplicationController
 
     if is_admin
       candidate = Candidate.find(params[:id])
-      pdf = Prawn::Document.new
+      pdf = Prawn::Document.new(background: "private/membretada.png", background_scale: 0.36, right_margin: 20)
       pdf.font 'Helvetica'
-      pdf.text candidate.name, size: 40
-      pdf.font 'Times-Roman'
-      pdf.text "holi", size: 84
+      y= 600
+      text = "Chihuahua, Chih., a #{Date.today.day} de #{get_month_name(Date.today.month)} del #{Date.today.year}" +
+      "\n Dirección Académica"
+      pdf.text_box text, size: 11, at:[320,y]
+      text = "Lic. María Eugenia Rangel Márquz,\n Jefa del Departamento de Recursos Humanos"
+      pdf.text_box text, size: 11, at:[20,y-=50]
+      pdf.formatted_text_box([:text => "Presente.-", :size => 12, :styles => [:bold] ], at:[20,y-=50])
+      text = "En relación a la contratación del personal académico, me permito comunicarle que con base al Estatuto del "+
+        "Personal Académico del CIMAV y del currículum del interesado, el Consejo Académico Interno tomó la decisión de "+
+        "contratar al #{candidate.degree}: #{candidate.name} con el nivel y categoría #{candidate.level.full_name}."
+      pdf.text_box text, size: 11, at:[20,y-=50]
+      text = "El  #{candidate.degree}: #{candidate.name} se integrará #{(candidate.department.name.include? "Unidad") ? "a la":"al" } #{candidate.department.name}, "+
+        "realizando las siguientes funciones:"
+      pdf.text_box text, size: 11, at:[20,y-=70]
+      text = "#{candidate.function}"
+      pdf.text_box text, size: 11, at:[20,y-=50]
+      text = "A T E N T A M E N T E"
+      pdf.text_box text, size: 11, at:[0,150], align: :center
+      text = "Dr. José Alberto Duarte Möller \n Director Académico"
+      pdf.text_box text, size: 11, at:[0,80], align: :center
+
       send_data pdf.render, filename: "contratacion#{candidate.name}.pdf", type: 'application/pdf', disposition: 'inline'
     else
       flash[:error] = "Sólo el administrador puede realizar esta acción"

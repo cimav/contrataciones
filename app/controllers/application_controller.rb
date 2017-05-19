@@ -36,5 +36,11 @@ class ApplicationController < ActionController::Base
   def get_candidates_waiting
     @candidates_waiting_number = Candidate.where(:status => Candidate::WAITING).size
   end
+
+  def get_month_name(number)
+    months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
+    name = months[number - 1]
+    return name
+  end
   helper_method :get_candidates_waiting
 end
