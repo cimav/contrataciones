@@ -23,11 +23,12 @@ class CandidatesController < ApplicationController
     data[:level_id] = Level::WITHOUT_LEVEL
     @candidate = Candidate.new(data)
     if @candidate.save(data)
-      ContratacionesMailer.new_candidate(@candidate).deliver_now
+      #ContratacionesMailer.new_candidate(@candidate).deliver_now
       flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
       redirect_to @candidate
     else
       flash[:error] = "Error al crear candidato"
+      flash[:alert] = @candidate.errors.full_messages[0]
       render :new
     end
   end
@@ -39,6 +40,7 @@ class CandidatesController < ApplicationController
       redirect_to @candidate
     else
       flash[:error] = "Error al actualizar candidato"
+      flash[:alert] = @candidate.errors.full_messages[0]
       render :edit
     end
   end
