@@ -7,7 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-inverse.navbar-fixed-top
+    %nav.navbar.navbar-fixed-top
       .container-fluid
         .navbar-header
           %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
@@ -21,7 +21,7 @@
           %ul.nav.navbar-nav
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a.btn.bn-default{:href => "/logout"}
+              %a.btn{:href => "/logout"}
                 %span.glyphicon.glyphicon-log-out
                 salir
 

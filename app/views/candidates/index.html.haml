@@ -1,23 +1,25 @@
 
 .container
 
-  %h1
+  %h1.titulo
     Candidatos Pendientes
   -if @candidates_waiting.size>0
     .list-group
       -@candidates_waiting.each do |candidate_waiting|
         %a.list-group-item.list-group-item-info{:href => "candidates/#{candidate_waiting.id}"}
-          .row
-            .col-md-8
+          .ro6
+            .col-md-7
               =candidate_waiting.name
             .col-md-4
               =candidate_waiting.department.name
+            .col-2
+              ="#{candidate_waiting.created_at.day}/#{candidate_waiting.created_at.month}/#{candidate_waiting.created_at.year}"
   -else
     %br
       %h4
         No hay candidatos pendientes
 
-  %h1
+  %h1.titulo
     Candidatos Finalizados
   %br
   -if @candidates_voted.size>0

@@ -1,6 +1,7 @@
 // Place all the styles related to the candidates controller here.
-// They will automatically be included in application.scss.
+// They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "general";
 .btn-file {
   position: relative;
   overflow: hidden;
@@ -19,4 +20,15 @@
   background: white;
   cursor: inherit;
   display: block;
+}
+
+.panel-heading{
+  margin-top: 0px;
+  background-color: $color-dark2 !important;
+
+  color: white !important;
+}
+
+.votacion{
+  padding-left:  18px;
 }

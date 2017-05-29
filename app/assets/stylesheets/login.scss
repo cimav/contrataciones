@@ -1,3 +1,44 @@
-// Place all the styles related to the login controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$brand: #10222B;
+#body-login {
+  background-color: $brand;
+  padding-top: 20px;
+  #login-area {
+    background: transparent url(/assets/logo-contrataciones.png) center top no-repeat;
+    padding-top: 260px;
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 640px;
+    .login-title {
+      color:#fff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+      font-size: 36px;
+      text-align: center;
+    }
+    .login-message {
+      margin-top: 20px;
+      text-align: center;
+      color: #ffd6d6;
+    }
+    .login-methods {
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px;
+      font-size: 14px;
+      border: 2px solid darken($brand, 5%);
+      background: #fafafa;
+      color: $brand;
+      border-radius: 17px;
+      //@include rounded(8px);
+    }
+    button:hover {
+      //background-color: #9ba2a5;
+      font-size: 120%;
+    }
+    rounded corner {
+      background-repeat: repeat-x;
+      border-color: darken(#fafafa, 14%);
+    }
+  }
+}

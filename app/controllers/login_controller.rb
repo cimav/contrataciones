@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
   def index
-    render :layout => false
+    render :layout => 'login'
   end
 end

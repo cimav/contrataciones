@@ -2,13 +2,13 @@
   %a{href:'candidates/new'}
     .col-md-3.text-center{style:' color: #E3E3E3;'}
       .thumbnail{style:'background-color: #31353D;'}
-        %span.glyphicon.glyphicon-plus.margen{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+        %span.glyphicon.glyphicon-plus.margen{"aria-hidden"=>true}
         .caption
           %h3{style:' color: #E3E3E3;'} Agregar candidato
   %a{href:'pendientes'}
     .col-md-3.text-center{style:' color: #E3E3E3;'}
       .thumbnail{style:'background-color: #2f3f57;'}
-        %span.glyphicon.glyphicon-time{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+        %span.glyphicon.glyphicon-time{"aria-hidden"=>true}
         -if get_candidates_waiting >0
           %span.badge{style:'background-color: #d43f3a;font-size: 20px;'}
             =get_candidates_waiting
@@ -17,13 +17,13 @@
   %a{href:'finalizados'}
     .col-md-3.text-center{style:' color: #E3E3E3;'}
       .thumbnail{style:'background-color: #611427;'}
-        %span.glyphicon.glyphicon-ok{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+        %span.glyphicon.glyphicon-ok{"aria-hidden"=>true}
         .caption
           %h3{style:' color: #E3E3E3;'} Candidatos finalizados
   %a{href:'users'}
     .col-md-3.text-center{style:' color: #E3E3E3;'}
       .thumbnail{style:'background-color: #1C1D21;'}
-        %span.glyphicon.glyphicon-user{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
+        %span.glyphicon.glyphicon-user{"aria-hidden"=>true}
         .caption
           %h3{style:' color: #E3E3E3;'} Usuarios
 

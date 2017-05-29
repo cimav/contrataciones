@@ -1,0 +1,39 @@
+$color-dark: #212529;
+$color-dark2: #31373D;
+$color-green: #02DAAF;
+$color-red: #EE403F;
+$color-body: #EBEEF0;
+body {
+  background-color: $color-body;
+}
+
+.border{
+  border-style: solid;
+  border-width: 1px;
+  border-color: $color-red;
+}
+
+.navbar{
+  background-color: $color-dark;
+
+  a{
+    color: white !important;
+  }
+  .btn:hover{
+    background-color: $color-red !important }
+}
+
+.navbar-brand:hover{
+  color: $color-body !important;
+}
+
+.titulo{
+  color: $color-dark2;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.thumbnail{
+  font-size: 90px;
+}
+

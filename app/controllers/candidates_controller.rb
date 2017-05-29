@@ -19,30 +19,41 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    data = candidate_params
-    data[:status] = Candidate::WAITING
-    data[:level_id] = Level::WITHOUT_LEVEL
-    @candidate = Candidate.new(data)
-    if @candidate.save(data)
-      ContratacionesMailer.new_candidate(@candidate).deliver_now
-      flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
-      redirect_to @candidate
+    if is_admin
+      data = candidate_params
+      data[:status] = Candidate::WAITING
+      data[:level_id] = Level::WITHOUT_LEVEL
+      @candidate = Candidate.new(data)
+      if @candidate.save(data)
+        ContratacionesMailer.new_candidate(@candidate).deliver_now
+        flash[:success] = "Se creó exitosamente al candidato: #{@candidate.name}"
+        redirect_to @candidate
+      else
+        flash[:error] = "Error al crear candidato"
+        flash[:alert] = @candidate.errors.full_messages[0]
+        render :new
+      end
     else
-      flash[:error] = "Error al crear candidato"
-      flash[:alert] = @candidate.errors.full_messages[0]
-      render :new
+      flash[:error] = "Sólo el administrador puede realizar esta acción"
+      redirect_to root_path
     end
+
   end
 
   def update
-    @candidate = Candidate.find(params[:id])
-    if @candidate.update(candidate_params)
-      flash[:notice] = "Se actualizó al candidato: #{@candidate.name}"
-      redirect_to @candidate
+    if is_admin
+      @candidate = Candidate.find(params[:id])
+      if @candidate.update(candidate_params)
+        flash[:notice] = "Se actualizó al candidato: #{@candidate.name}"
+        redirect_to @candidate
+      else
+        flash[:error] = "Error al actualizar candidato"
+        flash[:alert] = @candidate.errors.full_messages[0]
+        render :edit
+      end
     else
-      flash[:error] = "Error al actualizar candidato"
-      flash[:alert] = @candidate.errors.full_messages[0]
-      render :edit
+      flash[:error] = "Sólo el administrador puede realizar esta acción"
+      redirect_to root_path
     end
   end
 
@@ -50,6 +61,22 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find(params[:id])
     @response = Response.new
     @committee_members = User.where(:user_type => User::COMMITTEE)
+  end
+
+  def destroy
+    if is_admin
+      candidate = Candidate.find(params[:id])
+      #Elimina el objeto de la BD
+      if candidate.destroy
+        flash[:notice] = "Se eliminó a #{candidate.name}"
+        redirect_to candidates_path
+      else
+        lash[:error] = "Error al eliminar candidato"
+      end
+    else
+      flash[:error] = "Sólo el administrador puede realizar esta acción"
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -116,9 +143,9 @@ class CandidatesController < ApplicationController
       pdf.formatted_text_box([:text => "Presente.-", :size => 12, :styles => [:bold] ], at:[20,y-=50])
       text = "En relación a la contratación del personal académico, me permito comunicarle que con base al Estatuto del "+
         "Personal Académico del CIMAV y del currículum del interesado, el Consejo Académico Interno tomó la decisión de "+
-        "contratar al #{candidate.degree}: #{candidate.name} con el nivel y categoría #{candidate.level.full_name}."
+        "contratar a #{candidate.name} con el nivel y categoría #{candidate.level.full_name}."
       pdf.text_box text, size: 11, at:[20,y-=50]
-      text = "El  #{candidate.degree}: #{candidate.name} se integrará #{(candidate.department.name.include? "Unidad") ? "a la":"al" } #{candidate.department.name}, "+
+      text = "#{candidate.name} se integrará #{(candidate.department.name.include? "Unidad") ? "a la":"al" } #{candidate.department.name}, "+
         "realizando las siguientes funciones:"
       pdf.text_box text, size: 11, at:[20,y-=70]
       text = "#{candidate.function}"
@@ -184,10 +211,15 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def display_curriculum
+    cv = Candidate.find(params[:id]).curriculum
+    send_file cv.to_s, disposition:'inline'
+  end
+
 
   private
 
   def candidate_params
-    params.require(:candidate).permit(:name, :department_id, :sni, :function, :degree, :curriculum)
+    params.require(:candidate).permit(:name, :department_id, :title, :sni, :function, :degree, :curriculum)
   end
 end

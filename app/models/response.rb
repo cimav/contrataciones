@@ -35,7 +35,6 @@ class Response < ApplicationRecord
       else
         candidate.status = Candidate::DISAGREE
         candidate.save!
-        flash[:alert] = 'No se pudo tomar decisión unánime'
       end
 
     end

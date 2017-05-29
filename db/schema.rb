@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517184649) do
+ActiveRecord::Schema.define(version: 20170522221000) do
 
   create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "auditable_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170517184649) do
     t.string   "curriculum"
     t.integer  "decision_type"
     t.string   "comments"
+    t.string   "title"
     t.index ["department_id"], name: "index_candidates_on_department_id", using: :btree
     t.index ["level_id"], name: "index_candidates_on_level_id", using: :btree
   end
