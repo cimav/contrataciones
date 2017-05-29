@@ -1,244 +1,231 @@
 .panel.panel-default
   %h3.panel-heading
     Elegir nivel
-  .row
-    .col-md-12
-      .panel-body
+  .panel-body
+    %ul.list-group
+      %li.list-group-item
 
         =form_for @response, :url => "#{@candidate.id}/send_response"do |f|
           .row.votacion
-            .col-md-5{style:'vertical-align: middle'}
+            .col-md-3{style:'vertical-align: middle'}
               =f.label :level_id, 'Nivel:', class:'control-label',  style:'vertical-align: middle'
-              =f.collection_select :level_id, Level.all, :id, :full_name, class:'',  style:'vertical-align: middle'
+              =f.collection_select :level_id, Level.all, :id, :full_name, class:'form-control',  style:'vertical-align: middle'
             .col-md-7{style:'vertical-align: middle'}
-              =f.label :comments, 'comentarios:', class:'', style:'vertical-align: middle'
+              =f.label :comments, 'comentarios:', class:'control-label', style:'vertical-align: middle'
               =f.text_area :comments, class:'form-control', rows:'1',  style:'vertical-align: middle'
-            .row
-              #level-requirements
-                #level2{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Asociado A
+          .row.votacion
+            #level-requirements
+              #level2{style:'align= center'}
+                %h3
+                  Requerimientos Técnico Asociado A
 
-                  %ul
-                    %li
-                      Certificado de una carrera subprofesional o técnica, equivalente a los tres primeros
-                      años de una licenciatura en el área del trabajo por desarrollar, más tres años de práctica en esa área; o
-                    %li
-                      Pasante de una carrera subprofesional o técnica, equivalente a los tres primeros años de una
-                      licenciatura afín al área del trabajo por desarrollar, más cuatro años de practica en esta área; o
-                    %li
-                      Certificado de preparatoria técnica en el área del trabajo por desarrollar, más cinco años de
-                      práctica en esa área; o
-                    %li
-                      Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes
-                      a su nivel
-                    %br
-                    %p
-                      Los Técnicos Asociados nivel A deberán tener capacidad para:
-                    %li
-                      El control de calidad de materiales y componentes;
-                    %li
-                      El mantenimiento correctivo del equipo que maneja;
-                    %li
-                      El montaje de arreglos experimentales sencillos para satisfacer necesidades especificas; bajo esquemas
-                      preestablecidos;
-                    %li
-                      El manejo de máquinas y herramientas
-                #level3{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Asociado B
-                  .container
+                %ul
+                  %li
+                    Certificado de una carrera subprofesional o técnica, equivalente a los tres primeros
+                    años de una licenciatura en el área del trabajo por desarrollar, más tres años de práctica en esa área; o
+                  %li
+                    Pasante de una carrera subprofesional o técnica, equivalente a los tres primeros años de una
+                    licenciatura afín al área del trabajo por desarrollar, más cuatro años de practica en esta área; o
+                  %li
+                    Certificado de preparatoria técnica en el área del trabajo por desarrollar, más cinco años de
+                    práctica en esa área; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes
+                    a su nivel
+                  %br
+                  %p
+                    Los Técnicos Asociados nivel A deberán tener capacidad para:
+                  %li
+                    El control de calidad de materiales y componentes;
+                  %li
+                    El mantenimiento correctivo del equipo que maneja;
+                  %li
+                    El montaje de arreglos experimentales sencillos para satisfacer necesidades especificas; bajo esquemas
+                    preestablecidos;
+                  %li
+                    El manejo de máquinas y herramientas
+              #level3{style:'display:none'}
+                %h3
+                  Requerimientos Técnico Asociado B
+                %ul
+                  %br
+                  %p
+                    Además de los requisitos que se establecen para Técnico Asociado nivel A se requieren los siguientes:
+                  %li
+                    Ser pasante de licenciatura en el área del trabajo por desarrollar; o
+                  %li
+                    Haber alcanzado el nivel de Técnico Asociado A, más dos años de experiencia en el área; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores
+                    correspondientes a su nivel
+                  %br
+                  %p
+                    Además de lo anterior los Técnicos Asociados B deberán tener capacidad para:
+                  %li
+                    El manejo de paquetes computacionales;
+                  %li
+                    La construcción de piezas o dispositivos con control estricto de calidad; y
+                  %li
+                    El mantenimiento de instalaciones y sistemas
 
-                    %ul
-                      %br
-                      %p
-                        Además de los requisitos que se establecen para Técnico Asociado nivel A se requieren los siguientes:
-                      %li
-                        Ser pasante de licenciatura en el área del trabajo por desarrollar; o
-                      %li
-                        Haber alcanzado el nivel de Técnico Asociado A, más dos años de experiencia en el área; o
-                      %li
-                        Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores
-                        correspondientes a su nivel
-                      %br
-                      %p
-                        Además de lo anterior los Técnicos Asociados B deberán tener capacidad para:
-                      %li
-                        El manejo de paquetes computacionales;
-                      %li
-                        La construcción de piezas o dispositivos con control estricto de calidad; y
-                      %li
-                        El mantenimiento de instalaciones y sistemas
+              #level4{style:'display:none'}
+                %h3
+                  Requerimientos Técnico Asociado C
 
-                #level4{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Asociado C
-                  .container
+                %ul
+                  %br
+                  %p
+                    Además de los requisitos que se establecen para Técnico Asociado nivel B se requieren los siguientes:
+                  %li
+                    Poseer título de licenciatura en el área del trabajo por desarrollar; o
+                  %li
+                    Ser pasante de licenciatura en el área del trabajo por desarrollar más dos años de experiencia y cursos
+                    de especialización o equivalente en la misma área; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores
+                    correspondientes a su nivel
+                  %br
+                  %p
+                    Además de lo anterior los Técnicos Asociados B deberán tener capacidad para:
+                  %li
+                    El control de calidad de resultados de procesos;
+                  %li
+                    La calibración del equipo que maneja;
+                  %li
+                    La construcción de equipo para investigación y docencia; y
+                  %li
+                    La adecuación de unidades y arreglos de equipos para satisfacer necesidades especificas.
+              #level5{style:'display:none'}
+                %h3
+                  Requerimientos Técnico Titular A
 
-                    %ul
-                      %br
-                      %p
-                        Además de los requisitos que se establecen para Técnico Asociado nivel B se requieren los siguientes:
-                      %li
-                        Poseer título de licenciatura en el área del trabajo por desarrollar; o
-                      %li
-                        Ser pasante de licenciatura en el área del trabajo por desarrollar más dos años de experiencia y cursos
-                        de especialización o equivalente en la misma área; o
-                      %li
-                        Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores
-                        correspondientes a su nivel
-                      %br
-                      %p
-                        Además de lo anterior los Técnicos Asociados B deberán tener capacidad para:
-                      %li
-                        El control de calidad de resultados de procesos;
-                      %li
-                        La calibración del equipo que maneja;
-                      %li
-                        La construcción de equipo para investigación y docencia; y
-                      %li
-                        La adecuación de unidades y arreglos de equipos para satisfacer necesidades especificas.
-                #level5{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Titular A
-                  .container
+                %ul
 
-                    %ul
+                  %br
+                  %p
+                    Además de los requisitos que se establecen para Técnico Asociado nivel C se requieren los siguientes:
+                  %li
+                    Poseer título de licenciatura en el área del trabajo por desarrollar, más tres años de experiencia y cursos de especialización o equivalente en la misma área; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
+                  %br
+                  %p
+                    Además de lo anterior, los Técnicos Titulares nivel A deberán tener capacidad para:
 
-                      %br
-                      %p
-                        Además de los requisitos que se establecen para Técnico Asociado nivel C se requieren los siguientes:
-                      %li
-                        Poseer título de licenciatura en el área del trabajo por desarrollar, más tres años de experiencia y cursos de especialización o equivalente en la misma área; o
-                      %li
-                        Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
-                      %br
-                      %p
-                        Además de lo anterior, los Técnicos Titulares nivel A deberán tener capacidad para:
+                  %li
+                    La innovación o mejora de técnicas de recopilación, procesamiento y presentación de datos;
+                  %li
+                    El diseño de dispositivos y sistemas experimentales para satisfacer necesidades específicas;
+                  %li
+                    La elaboración de manuales de mantenimiento, operación y calibración del equipo que utilizan;
+                  %li
+                    La elaboración de informes técnicos con la descripción de metodologías, procedimientos y resultados de las tareas desarrolladas; y
+                  %li
+                    El desarrollo de programas de computadora, para satisfacer necesidades específicas.
 
-                      %li
-                        La innovación o mejora de técnicas de recopilación, procesamiento y presentación de datos;
-                      %li
-                        El diseño de dispositivos y sistemas experimentales para satisfacer necesidades específicas;
-                      %li
-                        La elaboración de manuales de mantenimiento, operación y calibración del equipo que utilizan;
-                      %li
-                        La elaboración de informes técnicos con la descripción de metodologías, procedimientos y resultados de las tareas desarrolladas; y
-                      %li
-                        El desarrollo de programas de computadora, para satisfacer necesidades específicas.
+              #level6{style:'display:none'}
+                %h3
+                  Requerimientos Técnico Titular B
+                %ul
+                  %br
+                  %p
+                    Además de los requisitos que se establecen para Técnico Titular nivel A se requieren los siguientes:
+                  %li
+                    Poseer título de maestro en la especialidad o área afín, más un año de experiencia en el área de trabajo por desarrollar; o
+                  %li
+                    Poseer título de licenciatura en el área de trabajo por desarrollar, más tres años de experiencia en esa área, más haber aprobado cursos de especialización; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
+              #level7{style:'display:none'}
+                %h3
+                  Requerimientos Técnico Titular C
+                %ul
+                  %br
+                  %p
+                    Además de los requisitos que se establecen para Técnico Titular nivel B se requieren los siguientes:
+                  %li
+                    Poseer título de maestro en la especialidad o área afín, más un año de experiencia en el área de trabajo por desarrollar; o
+                  %li
+                    Poseer título de licenciatura en el área de trabajo por desarrollar, más tres años de experiencia en esa área, más haber aprobado cursos de especialización; o
+                  %li
+                    Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
+              #level8{style:'display:none'}
+                %h3
+                  Requerimientos Investigador Asociado C
+                %ul
+                  %li
+                    Tener grado de doctor en un área académica de interés para el Centro;
+                  %li
+                    Contar con experiencia demostrada en productividad académica en
+                    relación al tiempo dedicado a actividades científico tecnológicas en el área de su especialidad;
+                  %li
+                    Haber participado en la producción de trabajos como autoría o coautoría en publicaciones
+                    arbitradas de al menos tres articulos que acrediten su competencia en la investigación
+              #level9{style:'display:none'}
+                %h3
+                  Requerimientos Investigador Titular A
+                %ul
+                  %li
+                    Tener grado de doctor en un área académica de interés para el Centro;
+                  %li
+                    Haber dirigido tesis a un estudiante de maestría o 3 de licenciatura e impartido 2 cursos de
+                    posgrado, en los términos y condiciones aprobados o que se aprueben por el Órgano de Gobierno;
+                  %li
+                    Haber realizado actividades de divulgación de acuerdo con las necesidades del Centro;
+                  %li
+                    Haber publicado al menos 5 artículos con arbitraje y con factor de impacto; y
+                  %li
+                    Pertenecer o haber sometido solicitud al Sistema Nacional de Investigadores (SNI)
+              #level10{style:'display:none'}
+                %h3
+                  Requerimientos Investigador Titular B
 
-                #level6{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Titular B
-                  .container
+                %ul
+                  %li
+                    Productividad académica en relación al tiempo dedicado a actividades científicas tecnológicas;
+                  %li
+                    Haber publicado al menos 10 artículos con arbitraje y con factor de impacto, de los cuales en
+                    el 30% sea primero, último o autor al que se dirija la correspondencia;
+                  %li
+                    En un 30% de las publicaciones el factor de impacto deberá ser igual o superior a 1.0;
+                  %li
+                    Haber graduado como director de tesis a un estudiante de doctorado o 3 de maestría,
+                    en el caso de codirecciones deberá ser el doble;
+                  %li
+                    Haber impartido al menos 5 cursos curriculares a nivel de posgrado;
+                  %li
+                    Pertenecer al Sistema Nacional de Investigadores (S N I); y
+                  %li
+                    Experiencia académica y/o en el sector industrial que incluya su participación en
+                    proyectos financiados, asesorías, patentes u otros productos relevantes.
+              #level11{style:'display:none'}
+                %h3
+                  Requerimientos Investigador Titular C
 
-                    %ul
-                      %br
-                      %p
-                        Además de los requisitos que se establecen para Técnico Titular nivel A se requieren los siguientes:
-                      %li
-                        Poseer título de maestro en la especialidad o área afín, más un año de experiencia en el área de trabajo por desarrollar; o
-                      %li
-                        Poseer título de licenciatura en el área de trabajo por desarrollar, más tres años de experiencia en esa área, más haber aprobado cursos de especialización; o
-                      %li
-                        Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
-                #level7{style:'display:none'}
-                  %h3
-                    Requerimientos Técnico Titular C
-                  .container
-
-                    %ul
-                      %br
-                      %p
-                        Además de los requisitos que se establecen para Técnico Titular nivel B se requieren los siguientes:
-                      %li
-                        Poseer título de maestro en la especialidad o área afín, más un año de experiencia en el área de trabajo por desarrollar; o
-                      %li
-                        Poseer título de licenciatura en el área de trabajo por desarrollar, más tres años de experiencia en esa área, más haber aprobado cursos de especialización; o
-                      %li
-                        Aprobar un examen ad-hoc, que evalúe y dictamine su capacidad para llevar a cabo las labores correspondientes a su nivel.
-                #level8{style:'display:none'}
-                  %h3
-                    Requerimientos Investigador Asociado C
-                  .container
-
-                    %ul
-                      %li
-                        Tener grado de doctor en un área académica de interés para el Centro;
-                      %li
-                        Contar con experiencia demostrada en productividad académica en
-                        relación al tiempo dedicado a actividades científico tecnológicas en el área de su especialidad;
-                      %li
-                        Haber participado en la producción de trabajos como autoría o coautoría en publicaciones
-                        arbitradas de al menos tres articulos que acrediten su competencia en la investigación
-                #level9{style:'display:none'}
-                  %h3
-                    Requerimientos Investigador Titular A
-                  .container
-
-                    %ul
-                      %li
-                        Tener grado de doctor en un área académica de interés para el Centro;
-                      %li
-                        Haber dirigido tesis a un estudiante de maestría o 3 de licenciatura e impartido 2 cursos de
-                        posgrado, en los términos y condiciones aprobados o que se aprueben por el Órgano de Gobierno;
-                      %li
-                        Haber realizado actividades de divulgación de acuerdo con las necesidades del Centro;
-                      %li
-                        Haber publicado al menos 5 artículos con arbitraje y con factor de impacto; y
-                      %li
-                        Pertenecer o haber sometido solicitud al Sistema Nacional de Investigadores (SNI)
-                #level10{style:'display:none'}
-                  %h3
-                    Requerimientos Investigador Titular B
-                  .container
-
-                    %ul
-                      %li
-                        Productividad académica en relación al tiempo dedicado a actividades científicas tecnológicas;
-                      %li
-                        Haber publicado al menos 10 artículos con arbitraje y con factor de impacto, de los cuales en
-                        el 30% sea primero, último o autor al que se dirija la correspondencia;
-                      %li
-                        En un 30% de las publicaciones el factor de impacto deberá ser igual o superior a 1.0;
-                      %li
-                        Haber graduado como director de tesis a un estudiante de doctorado o 3 de maestría,
-                        en el caso de codirecciones deberá ser el doble;
-                      %li
-                        Haber impartido al menos 5 cursos curriculares a nivel de posgrado;
-                      %li
-                        Pertenecer al Sistema Nacional de Investigadores (S N I); y
-                      %li
-                        Experiencia académica y/o en el sector industrial que incluya su participación en
-                        proyectos financiados, asesorías, patentes u otros productos relevantes.
-                #level11{style:'display:none'}
-                  %h3
-                    Requerimientos Investigador Titular C
-                  .container
-
-                    %ul
-                      %li
-                        Productividad académica en relación al tiempo dedicado a actividades científico tecnológicas;
-                      %li
-                        Haber publicado al menos 20 artículos con arbitraje y con factor de impacto, de los cuales en
-                        el 30% sea primero, último o autor al que se dirija la correspondencia;
-                      %li
-                        En un 30% de las publicaciones el factor de impacto deberá ser igual o superior a 1.0;
-                      %li
-                        Haber graduado como director de tesis a 3 estudiantes de doctorado o 2 de doctorado
-                        y 3 de maestría, en el caso de codirecciones se requiere el doble;
-                      %li
-                        Haber impartido y/o coordinado al menos 5 cursos curriculares a nivel de posgrado;
-                      %li
-                        Pertenecer al Sistema Nacional de Investigadores (S N I); y
-                      %li
-                        Experiencia académica y/o en el sector industrial que incluya su participación en
-                        proyectos financiados, asesorías, patentes u otros productos relevantes.
+                %ul
+                  %li
+                    Productividad académica en relación al tiempo dedicado a actividades científico tecnológicas;
+                  %li
+                    Haber publicado al menos 20 artículos con arbitraje y con factor de impacto, de los cuales en
+                    el 30% sea primero, último o autor al que se dirija la correspondencia;
+                  %li
+                    En un 30% de las publicaciones el factor de impacto deberá ser igual o superior a 1.0;
+                  %li
+                    Haber graduado como director de tesis a 3 estudiantes de doctorado o 2 de doctorado
+                    y 3 de maestría, en el caso de codirecciones se requiere el doble;
+                  %li
+                    Haber impartido y/o coordinado al menos 5 cursos curriculares a nivel de posgrado;
+                  %li
+                    Pertenecer al Sistema Nacional de Investigadores (S N I); y
+                  %li
+                    Experiencia académica y/o en el sector industrial que incluya su participación en
+                    proyectos financiados, asesorías, patentes u otros productos relevantes.
 
 
 
             .row
-              .col-md-12{style:'vertical-align: middle'}
+              .col-md-6
+              .col-md-6{style:'vertical-align: middle'}
                 =f.submit 'Enviar',  style:'vertical-align: middle', class:'btn btn-success'
 
 

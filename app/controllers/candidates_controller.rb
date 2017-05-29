@@ -71,7 +71,7 @@ class CandidatesController < ApplicationController
         flash[:notice] = "Se eliminó a #{candidate.name}"
         redirect_to candidates_path
       else
-        lash[:error] = "Error al eliminar candidato"
+        flash[:error] = "Error al eliminar candidato"
       end
     else
       flash[:error] = "Sólo el administrador puede realizar esta acción"
