@@ -4,7 +4,7 @@ class Candidate < ApplicationRecord
   belongs_to :level
   has_many :responses, dependent: :destroy
   mount_uploader :curriculum, CurriculumUploader
-  validates :curriculum, presence: { message: "no puede estar vacío"}
+  validates :curriculum, presence: { message: "no puede estar vacío"}, on: :create
 
   UNANIMITY = 1
   NOT_COMMITTEE = 2
