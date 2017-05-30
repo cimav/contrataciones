@@ -42,7 +42,7 @@
           .thumbnail{style:'height: 100%'}
 
 
-            %a.btn{href:"/candidates/#{@candidate.id}/curriculum"}
+            =link_to "/candidates/#{@candidate.id}/curriculum", method: :post, class:'btn' do
               %span.glyphicon.glyphicon-briefcase{"aria-hidden"=>true, style:'font-size: 90px; margin-top:12px;'}
               %br
               Curriculum
@@ -64,7 +64,7 @@
                   %th
 
                   %th
-                    Miembro del comité
+                    Miembro del CAI
                   %th
                     Nivel elegido
                   %th

@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get '/login' => 'login#index'
   resources 'candidates'
   resources 'users'
-  get 'candidates/:id/curriculum' => 'candidates#display_curriculum'
+  post 'candidates/:id/curriculum' => 'candidates#display_curriculum'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

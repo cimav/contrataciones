@@ -4,8 +4,8 @@ class CandidatesController < ApplicationController
 
 
   def index
-    @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
-    @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
+    @candidates_waiting = Candidate.where(:status => Candidate::WAITING).order("created_at DESC")
+    @candidates_voted = Candidate.where.not(:status => Candidate::WAITING).order("created_at DESC")
 
     if is_admin
       render :template => 'home/admin-index'
@@ -121,11 +121,11 @@ class CandidatesController < ApplicationController
   end
 
   def candidates_waiting
-    @candidates_waiting = Candidate.where(:status => Candidate::WAITING)
+    @candidates_waiting = Candidate.where(:status => Candidate::WAITING).order("created_at DESC")
   end
 
   def candidates_finalized
-    @candidates_voted = Candidate.where.not(:status => Candidate::WAITING)
+    @candidates_voted = Candidate.where.not(:status => Candidate::WAITING).order("created_at DESC")
   end
 
   def document
