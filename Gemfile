@@ -1,3 +1,5 @@
+#ruby=ruby-2.2.2
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -19,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'haml'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap-sass', '~> 3.3.6'
