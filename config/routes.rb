@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'departments/create' => 'departments#create'
+
   get 'login/index'
   get 'home/index'
   get 'candidates/:id/documento' => 'candidates#document'

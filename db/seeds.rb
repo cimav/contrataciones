@@ -11,8 +11,14 @@ Department.create(id:1,name:'Departamento de Física de Materiales')
 Department.create(id:2,name:'Departamento de Ingeniería y Química de Materiales')
 Department.create(id:3,name:'Departamento de Metalurgia e Integridad Estructural')
 Department.create(id:4,name:'Departamento de Medio Ambiente y Energía')
-Department.create(id:5,name:'Unidad Durango')
+Department.create(id:5,name:'Departamento de Ingeniería Sustentable')
 Department.create(id:6,name:'Unidad Monterrey')
+Department.create(id:7,name:'Dirección Académica')
+Department.create(id:8,name:'Dirección de Vinculación')
+Department.create(id:9,name:'Dirección de Administración y Finanzas')
+Department.create(id:10,name:'Dirección de Planeación y Asuntos Estratégicos')
+puts 'departamentos cargados'
+
 
 Level.delete_all
 puts 'cargando niveles...'
@@ -27,3 +33,4 @@ Level.create(id:8,full_name:'Invesitgador Asociado C', short_name:'IAC')
 Level.create(id:9,full_name:'Invesitgador Titular A', short_name:'ITA')
 Level.create(id:10,full_name:'Invesitgador Titular B', short_name:'ITB')
 Level.create(id:11,full_name:'Invesitgador Titular C', short_name:'ITC')
+puts 'niveles cargados'
