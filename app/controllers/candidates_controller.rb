@@ -145,7 +145,7 @@ class CandidatesController < ApplicationController
         "Personal Académico del CIMAV y del currículum del interesado, el Consejo Académico Interno tomó la decisión de "+
         "contratar a #{candidate.name} con el nivel y categoría #{candidate.level.full_name}."
       pdf.text_box text, size: 11, at:[20,y-=50]
-      text = "#{candidate.name} se integrará #{(candidate.department.name.include? "Unidad") ? "a la":"al" } #{candidate.department.name}, "+
+      text = "#{candidate.name} se integrará #{(candidate.department.name.include? "Departamento") ? "al":"a" } #{candidate.department.name}, "+
         "realizando las siguientes funciones:"
       pdf.text_box text, size: 11, at:[20,y-=70]
       text = "#{candidate.function}"
