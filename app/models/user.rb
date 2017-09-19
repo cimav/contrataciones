@@ -5,10 +5,12 @@ class User < ApplicationRecord
 
   ADMIN = 1
   COMMITTEE = 2
+  SUPER_USER = 1000
 
   TYPES = {
       ADMIN => 'Administrador',
-      COMMITTEE => 'Miembro del comité'
+      COMMITTEE => 'Miembro del comité',
+      SUPER_USER => 'Super Usuario'
   }
 
   def get_type

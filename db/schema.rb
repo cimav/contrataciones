@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170522221000) do
 
-  create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "auditable_id"
     t.string   "auditable_type"
     t.integer  "associated_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170522221000) do
     t.index ["user_id", "user_type"], name: "user_index", using: :btree
   end
 
-  create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "department_id"
     t.integer  "status"
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 20170522221000) do
     t.index ["level_id"], name: "index_candidates_on_level_id", using: :btree
   end
 
-  create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "full_name"
     t.string   "short_name"
     t.integer  "level_type"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170522221000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "candidate_id"
     t.integer  "level_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170522221000) do
     t.index ["user_id"], name: "index_responses_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "department_id"
     t.string   "email"
