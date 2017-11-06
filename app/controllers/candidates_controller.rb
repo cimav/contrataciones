@@ -138,7 +138,7 @@ class CandidatesController < ApplicationController
       text = "Chihuahua, Chih., a #{Date.today.day} de #{get_month_name(Date.today.month)} del #{Date.today.year}" +
       "\n Dirección Académica"
       pdf.text_box text, size: 11, at:[320,y]
-      text = "Lic. María Eugenia Rangel Márquz,\n Jefa del Departamento de Recursos Humanos"
+      text = "Lic. María Eugenia Rangel Márquez,\n Jefa del Departamento de Recursos Humanos"
       pdf.text_box text, size: 11, at:[20,y-=50]
       pdf.formatted_text_box([:text => "Presente.-", :size => 12, :styles => [:bold] ], at:[20,y-=50])
       text = "En relación a la contratación del personal académico, me permito comunicarle que con base al Estatuto del "+
