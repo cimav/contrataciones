@@ -3,7 +3,7 @@ class ContratacionesMailer < ApplicationMailer
 		@candidate = candidate
 
 		@from = "Notificaciones CIMAV <notificaciones@cimav.edu.mx>"
-		@to = User.where(user_type: User::COMMITTEE).map(&:email).join(",")
+		@to = User.where(user_type: User::COMMITTEE, status: 1).map(&:email).join(",")
 
 		#unless candidate.curriculum.blank?
 			#attachments[File.basename(@candidate.curriculum.path)] = File.read(@candidate.curriculum.path)

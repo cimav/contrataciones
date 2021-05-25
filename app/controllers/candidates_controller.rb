@@ -60,7 +60,7 @@ class CandidatesController < ApplicationController
   def show
     @candidate = Candidate.find(params[:id])
     @response = Response.new
-    @committee_members = User.where(:user_type => User::COMMITTEE)
+    @committee_members = User.where(:user_type => User::COMMITTEE, :status => 1)
   end
 
   def destroy
@@ -138,7 +138,7 @@ class CandidatesController < ApplicationController
       text = "Chihuahua, Chih., a #{Date.today.day} de #{get_month_name(Date.today.month)} del #{Date.today.year}" +
       "\n Dirección Académica"
       pdf.text_box text, size: 11, at:[320,y]
-      text = "Lic. María Eugenia Rangel Márquez,\n Jefa del Departamento de Recursos Humanos"
+      text = "Lic. Griselda Tamez Beltrán,\n Jefa del Departamento de Recursos Humanos"
       pdf.text_box text, size: 11, at:[20,y-=50]
       pdf.formatted_text_box([:text => "Presente.-", :size => 12, :styles => [:bold] ], at:[20,y-=50])
       text = "En relación a la contratación del personal académico, me permito comunicarle que con base al Estatuto del "+
@@ -152,7 +152,7 @@ class CandidatesController < ApplicationController
       pdf.text_box text, size: 11, at:[20,y-=50]
       text = "A T E N T A M E N T E"
       pdf.text_box text, size: 11, at:[0,150], align: :center
-      text = "Dr. José Alberto Duarte Möller \n Director Académico"
+      text = "Dr. Alfredo Aguilar Elguezabal \n Director Académico"
       pdf.text_box text, size: 11, at:[0,80], align: :center
 
       send_data pdf.render, filename: "contratacion#{candidate.name}.pdf", type: 'application/pdf', disposition: 'inline'
